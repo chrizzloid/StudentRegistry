@@ -12,7 +12,7 @@ namespace StudentRegistry
         {
             Console.WriteLine("---- Menu ----");
             Console.WriteLine("1: Add Student");
-            Console.WriteLine("2: Change Student Information");
+            Console.WriteLine("2: Update Student Information");
             Console.WriteLine("3: Show All Students");
             Console.WriteLine("0: Exit Application");
             Console.WriteLine("--------------");

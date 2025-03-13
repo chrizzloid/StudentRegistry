@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace StudentRegistry
@@ -11,18 +12,22 @@ namespace StudentRegistry
     {
         public static bool CheckValidInput(string input, bool checkSpace)
         {
-            if (input.IsNullOrEmpty())
+            //if(input.IsNullOrEmpty() || input.Any(char.IsDigit))
+            if (input.IsNullOrEmpty() || !Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ -]+$"))
             {
+                PrintErrorInvalidInput();
                 return false;
             }
             
+            /*
             if (input.Any(char.IsDigit))
             {
                 return false;
-            }
+            }*/
             
             if (checkSpace && input.Contains(' '))
             {
+                PrintErrorInvalidInput();
                 return false;
             }
 

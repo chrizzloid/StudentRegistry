@@ -10,7 +10,7 @@ namespace StudentRegistry
     class StudentHandler
     {
         public StudentDbContext studentDbContext = new();
-        public DbSet<Student> Students { get; set; }
+        //public DbSet<Student> Students { get; set; }
         public void AddStudent()
         {
             string? fName;
@@ -24,15 +24,9 @@ namespace StudentRegistry
             {
                 fName = Console.ReadLine();
 
-                bool isValidFName = InputValidator.CheckValidInput(fName, true);
-
-                if (isValidFName)
+                if (InputValidator.CheckValidInput(fName, true))
                 {
                     break;
-                }
-                else
-                {
-                    InputValidator.PrintErrorInvalidInput();
                 }
             }
 
@@ -42,15 +36,9 @@ namespace StudentRegistry
             {
                 lName = Console.ReadLine();
 
-                bool isValidLName = InputValidator.CheckValidInput(lName, false);
-
-                if (isValidLName)
+                if (InputValidator.CheckValidInput(lName, false))
                 {
                     break;
-                }
-                else
-                {
-                    InputValidator.PrintErrorInvalidInput();
                 }
             }
 
@@ -60,15 +48,9 @@ namespace StudentRegistry
             {
                 city = Console.ReadLine();
 
-                bool isValidCity = InputValidator.CheckValidInput(city, false);
-
-                if (isValidCity)
+                if (InputValidator.CheckValidInput(city, false))
                 {
                     break;
-                }
-                else
-                {
-                    InputValidator.PrintErrorInvalidInput();
                 }
             }
 
@@ -93,7 +75,7 @@ namespace StudentRegistry
                     if (confirmation == "Y" || confirmation == "y")
                     {
                         Student stud = new(fName, lName, city);
-                        Students.Add(stud);
+                        studentDbContext.Students.Add(stud);
                         studentDbContext.SaveChanges();
 
                         Console.WriteLine("Added student!\n");
@@ -132,7 +114,7 @@ namespace StudentRegistry
                 }
             }
 
-            var studentToChange = Students.Where(s => s.StudentId == selectionInt).FirstOrDefault<Student>();
+            var studentToChange = studentDbContext.Students.Where(s => s.StudentId == selectionInt).FirstOrDefault<Student>();
 
             if (studentToChange == null)
             {
@@ -152,15 +134,9 @@ namespace StudentRegistry
                 {
                     fName = Console.ReadLine();
 
-                    bool isValidFName = InputValidator.CheckValidInput(fName, true);
-
-                    if (isValidFName)
+                    if (InputValidator.CheckValidInput(fName, true))
                     {
                         break;
-                    }
-                    else
-                    {
-                        InputValidator.PrintErrorInvalidInput();
                     }
                 }
 
@@ -170,15 +146,9 @@ namespace StudentRegistry
                 {
                     lName = Console.ReadLine();
 
-                    bool isValidLName = InputValidator.CheckValidInput(lName, false);
-
-                    if (isValidLName)
+                    if (InputValidator.CheckValidInput(lName, false))
                     {
                         break;
-                    }
-                    else
-                    {
-                        InputValidator.PrintErrorInvalidInput();
                     }
                 }
 
@@ -188,15 +158,9 @@ namespace StudentRegistry
                 {
                     city = Console.ReadLine();
 
-                    bool isValidCity = InputValidator.CheckValidInput(city, false);
-
-                    if (isValidCity)
+                    if (InputValidator.CheckValidInput(city, false))
                     {
                         break;
-                    }
-                    else
-                    {
-                        InputValidator.PrintErrorInvalidInput();
                     }
                 }
 
@@ -214,7 +178,7 @@ namespace StudentRegistry
         {
             Console.WriteLine("---- Students ----");
 
-            foreach (var stud in Students)
+            foreach (var stud in studentDbContext.Students)
             {
                 Console.WriteLine($"{stud.StudentId}: {stud.FirstName} {stud.LastName}, {stud.City}");
             }
