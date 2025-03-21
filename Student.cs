@@ -13,11 +13,6 @@ namespace StudentRegistry
         public string LastName { get; set; } = "";
         public string City { get; set; } = "";
 
-        public Student()
-        {
-            
-        }
-
         public Student(string firstName, string lastName, string city)
         {
             FirstName = firstName;

@@ -12,19 +12,12 @@ namespace StudentRegistry
     {
         public static bool CheckValidInput(string input, bool checkSpace)
         {
-            //if(input.IsNullOrEmpty() || input.Any(char.IsDigit))
             if (input.IsNullOrEmpty() || !Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ -]+$"))
             {
                 PrintErrorInvalidInput();
                 return false;
             }
-            
-            /*
-            if (input.Any(char.IsDigit))
-            {
-                return false;
-            }*/
-            
+
             if (checkSpace && input.Contains(' '))
             {
                 PrintErrorInvalidInput();

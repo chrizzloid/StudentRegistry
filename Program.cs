@@ -6,7 +6,6 @@
         {
             string? menuSelection = "-1";
 
-            //StudentDbContext StudDbCon = new();
             StudentHandler studentHandler = new();
 
             while (menuSelection != "0")

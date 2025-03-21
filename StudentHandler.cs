@@ -10,7 +10,6 @@ namespace StudentRegistry
     class StudentHandler
     {
         public StudentDbContext studentDbContext = new();
-        //public DbSet<Student> Students { get; set; }
         public void AddStudent()
         {
             string? fName;
