@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Protocols;
 
 namespace StudentRegistry
 {
-    class StudentDbContext : DbContext
+    public class StudentDbContext : DbContext
     {
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StudentRegistryDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public DbSet<Student> Students { get; set; }

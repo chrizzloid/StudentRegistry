@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace StudentRegistry
 {
-    class StudentHandler
+    public class StudentHandler
     {
-        public StudentDbContext studentDbContext = new();
+        private StudentDbContext studentDbContext = new();
         public void AddStudent()
         {
             string? fName;
